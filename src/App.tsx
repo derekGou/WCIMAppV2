@@ -256,7 +256,7 @@ export default function App() {
   // See Demo API key Terms and Conditions
   // https://developer.mappedin.com/v6/demo-keys-and-maps/
   const { isLoading, error, mapData } = useMapData({
-    mapId: '6736169666ce60000b916aa4',
+    mapId: '66f7ff6142d0ac000b79d8db',
     key: import.meta.env.VITE_MY_VERCEL_MY_KEY,
     secret: import.meta.env.VITE_MY_VERCEL_MY_SECRET,
   });
