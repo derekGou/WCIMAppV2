@@ -188,7 +188,11 @@ function MyCustomComponent() {
         <div className="focus-within:border-[#4ad] bg-white border-[0.125rem] border-solid border-[#ddd] rounded-[15px] p-0 flex flex-col items-start w-full justify-start overflow-hidden">
           <div className="bg-white flex flex-row items-center justify-center grow gap-[10px] w-full py-[10px] px-[20px] box-border">
             <IoIosSearch/>
-            <input placeholder="Destination" className="text-[1rem] b-0 grow focus:outline-none" value={input2} onChange={(e)=>{setInput2(e.target.value)}}/>
+            <input placeholder="Destination" className="text-[1rem] b-0 grow focus:outline-none" value={input2} onChange={
+              (e)=>{
+                setInput2(e.target.value)
+              }
+            }/>
             <div className="bg-white rounded-full hover:brightness-90 overflow-none cursor-pointer" onClick={()=>{
               setAutofill2([])
               setInput2('')
@@ -256,7 +260,7 @@ export default function App() {
   // See Demo API key Terms and Conditions
   // https://developer.mappedin.com/v6/demo-keys-and-maps/
   const { isLoading, error, mapData } = useMapData({
-    mapId: '66f7ff6142d0ac000b79d8db',
+    mapId: '6736169666ce60000b916aa4',
     key: import.meta.env.VITE_MY_VERCEL_MY_KEY,
     secret: import.meta.env.VITE_MY_VERCEL_MY_SECRET,
   });
