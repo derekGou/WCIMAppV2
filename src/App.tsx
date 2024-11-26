@@ -10,7 +10,7 @@ function MyCustomComponent() {
     const response = await fetch('/api/incrementVisits', {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/plain',
+        'Content-Type': 'application/json',
       },
     });
   
@@ -26,7 +26,7 @@ function MyCustomComponent() {
     const response = await fetch('/api/incrementClicks', {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/plain',
+        'Content-Type': 'application/json',
       },
     });
   
