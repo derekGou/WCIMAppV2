@@ -18,8 +18,8 @@ function MyCustomComponent() {
     //   throw new Error('Failed to increment visits');
     // }
   
-    const data = await response.json();
-    console.log(data.message);
+    const data = response;
+    console.log(data);
   }
 
   const newClick = async() => {
@@ -30,12 +30,12 @@ function MyCustomComponent() {
       },
     });
   
-    if (!response.ok) {
-      throw new Error('Failed to increment clicks');
-    }
+    // if (!response.ok) {
+    //   throw new Error('Failed to increment clicks');
+    // }
   
-    const data = await response.json();
-    console.log(data.message);
+    const data = response;
+    console.log(data);
   }
 
   var myBool = true
