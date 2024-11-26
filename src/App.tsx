@@ -302,11 +302,6 @@ function MyCustomComponent() {
 export default function App() {
   // See Demo API key Terms and Conditions
   // https://developer.mappedin.com/v6/demo-keys-and-maps/
-  console.log({
-    mapId: '6736169666ce60000b916aa4',
-    key: import.meta.env.VITE_MY_VERCEL_MY_KEY,
-    secret: import.meta.env.VITE_MY_VERCEL_MY_SECRET,
-  })
   const { isLoading, error, mapData } = useMapData({
     mapId: '6736169666ce60000b916aa4',
     key: import.meta.env.VITE_MY_VERCEL_MY_KEY,
