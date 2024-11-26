@@ -3,8 +3,54 @@ import { MapView, useMapData, useMap, Label } from "@mappedin/react-sdk";
 import "@mappedin/react-sdk/lib/esm/index.css";
 import { IoIosSearch, IoIosClose } from "react-icons/io";
 import { IconContext } from "react-icons";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { doc, collection, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 function MyCustomComponent() {
+
+  // Import the functions you need from the SDKs you need
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDepyqIaXxqiE-2seWOgxPZj5eSrQSi_Ew",
+    authDomain: "wcimapp.firebaseapp.com",
+    projectId: "wcimapp",
+    storageBucket: "wcimapp.firebasestorage.app",
+    messagingSenderId: "1013510959609",
+    appId: "1:1013510959609:web:c9163b05b778cb3c694d28",
+    measurementId: "G-PN7EC5Y1D3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app)
+
+  const newVisit = async() => {
+    const docRef = doc(collection(db, 'analytics'), 'visits')
+    const docSnap = await getDoc(docRef)
+    await setDoc(docRef, {'val': docSnap.data()!['val']+1})
+  }
+
+  const newClick = async() => {
+    const docRef = doc(collection(db, 'analytics'), 'clicks')
+    const docSnap = await getDoc(docRef)
+    await setDoc(docRef, {'val': docSnap.data()!['val']+1})
+  }
+
+  var myBool = true
+  useEffect(() => {
+    if (myBool){
+      newVisit()
+      myBool = false
+      window.addEventListener('click', function(){
+        newClick()
+      })
+    }
+  }, [])
   const { mapData, mapView } = useMap();
   const [input1, setInput1] = useState('');
   const [autofill1, setAutofill1] = useState<JSX.Element[]>([])
