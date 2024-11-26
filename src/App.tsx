@@ -8,15 +8,15 @@ function MyCustomComponent() {
   
   const newVisit = async() => {
     const response = await fetch('/api/incrementVisits', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
     });
   
-    if (!response.ok) {
-      throw new Error('Failed to increment visits');
-    }
+    // if (!response.ok) {
+    //   throw new Error('Failed to increment visits');
+    // }
   
     const data = await response.json();
     console.log(data.message);
@@ -24,7 +24,7 @@ function MyCustomComponent() {
 
   const newClick = async() => {
     const response = await fetch('/api/incrementClicks', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

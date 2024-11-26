@@ -24,6 +24,10 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: "Unauthorized request" });
   }
 
+  if (req.method !== 'PUT') {
+      return res.status(405).json({ error: req.method + ' visit' });
+  }
+
   try {
     const docRef = db.collection('analytics').doc('visits');
     await db.runTransaction(async (transaction) => {
