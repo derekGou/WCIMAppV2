@@ -19,14 +19,8 @@ export default async function handler(req, res) {
     }
     // Verify request origin
     const origin = req.headers.origin;
-    console.log("Request method:", req.method);
-    console.log("Origin:", origin);
     if (origin !== allowedOrigin) {
         return res.status(403).json({ error: "Unauthorized request" });
-    }
-
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: req.method + ' visit' });
     }
 
     try {
