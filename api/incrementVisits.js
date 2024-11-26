@@ -23,9 +23,9 @@ export default async function handler(req, res) {
     }
     // Verify request origin
 
-    // if (req.method !== 'PUT') {
-    //     return res.status(405).json({ error: req.method + ' visit' });
-    // }
+    if (req.method != 'PUT') {
+        return res.status(405).json({ error: `${req.method} not allowed` });
+    }
 
     try {
         const docRef = db.collection('analytics').doc('clicks');
