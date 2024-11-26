@@ -16,7 +16,7 @@ function MyCustomComponent() {
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyDepyqIaXxqiE-2seWOgxPZj5eSrQSi_Ew",
+    apiKey: import.meta.env.VITE_MY_VERCEL_MY_FIREBASE,
     authDomain: "wcimapp.firebaseapp.com",
     projectId: "wcimapp",
     storageBucket: "wcimapp.firebasestorage.app",
