@@ -4,7 +4,6 @@ import "@mappedin/react-sdk/lib/esm/index.css";
 import { IoIosSearch, IoIosClose } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { doc, collection, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 function MyCustomComponent() {
