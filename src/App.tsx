@@ -14,12 +14,12 @@ function MyCustomComponent() {
       },
     });
   
-    // if (!response.ok) {
-    //   throw new Error('Failed to increment visits');
-    // }
+    if (!response.ok) {
+      throw new Error('Failed to increment visits');
+    }
   
-    const data = response;
-    console.log(data);
+    const data = await response.json();
+    console.log(data.message);
   }
 
   const newClick = async() => {
@@ -30,12 +30,12 @@ function MyCustomComponent() {
       },
     });
   
-    // if (!response.ok) {
-    //   throw new Error('Failed to increment clicks');
-    // }
+    if (!response.ok) {
+      throw new Error('Failed to increment clicks');
+    }
   
-    const data = response;
-    console.log(data);
+    const data = await response.json();
+    console.log(data.message);
   }
 
   var myBool = true
