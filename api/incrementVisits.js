@@ -2,6 +2,8 @@ import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 // Initialize Firebase Admin SDK (if not already initialized globally)
+
+console.log(process.env.FIREBASE_PRIVATE_KEY)
 const app = initializeApp({
     credential: cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
@@ -9,8 +11,6 @@ const app = initializeApp({
         privateKey: process.env.FIREBASE_PRIVATE_KEY,
     }),
 });
-
-console.log(process.env.FIREBASE_PRIVATE_KEY)
 
 const db = getFirestore(app);
 
