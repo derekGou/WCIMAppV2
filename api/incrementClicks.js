@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const docRef = db.collection('analytics').doc('visits');
+    const docRef = db.collection('analytics').doc('clicks');
     await db.runTransaction(async (transaction) => {
       const doc = await transaction.get(docRef);
       if (!doc.exists) {
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       }
     });
 
-    return res.status(200).json({ message: "Visits incremented successfully" });
+    return res.status(200).json({ message: "Clicks incremented successfully" });
   } catch (error) {
     console.error("Error incrementing visits:", error);
     return res.status(500).json({ error: "Internal Server Error" });
