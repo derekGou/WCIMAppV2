@@ -8,7 +8,7 @@ function MyCustomComponent() {
   
   const newVisit = async() => {
     const response = await fetch('/api/incrementVisits', {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,7 +24,7 @@ function MyCustomComponent() {
 
   const newClick = async() => {
     const response = await fetch('/api/incrementClicks', {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
