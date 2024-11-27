@@ -23,7 +23,6 @@ export default async function handler(req, res) {
   if (!allowedOrigin.includes(origin)) {
     return res.status(403).json({ error: "Unauthorized request" });
   }
-  console.log(origin, req.method)
 
   // Verify request origin
 
