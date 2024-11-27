@@ -2,14 +2,30 @@
     "version": 2,
     "builds": [
       {
-        "src": "pages/api/**/*.js",
+        "src": "index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "api/incrementClicks.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/incrementVisits.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/api/(.*)",
-        "dest": "/pages/api/$1"
+        "src": "/api/incrementClicks",
+        "dest": "/api/incrementClicks.js"
+      },
+      {
+        "src": "/api/incrementVisits",
+        "dest": "/api/incrementVisits.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
       }
     ]
   }
