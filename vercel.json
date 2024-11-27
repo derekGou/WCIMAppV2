@@ -15,23 +15,26 @@
       }
     ],
     "routes": [
-        {
-          "src": "/api/incrementClicks",
-          "methods": ["POST", "GET"],
-          "dest": "/api/incrementClicks.ts"
-        },
-        {
-          "src": "/api/incrementVisits",
-          "methods": ["POST", "GET"],
-          "dest": "/api/incrementVisits.ts"
-        },
-        {
-          "src": "/(.*).js",
-          "dest": "/$1.js",
-          "headers": {
-            "Content-Type": "application/javascript"
-          }
-        },{ "src": "/[^.]+", "dest": "/", "status": 200 }
-        
+      {
+        "src": "/api/incrementClicks",
+        "methods": ["POST", "GET"],
+        "dest": "/api/incrementClicks.ts"
+      },
+      {
+        "src": "/api/incrementVisits",
+        "methods": ["POST", "GET"],
+        "dest": "/api/incrementVisits.ts"
+      },
+      {
+        "src": "/(.*).js",
+        "dest": "/$1.js",
+        "headers": {
+          "Content-Type": "application/javascript"
+        }
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
     ]
   }
