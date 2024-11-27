@@ -7,7 +7,7 @@ import { IconContext } from "react-icons";
 function MyCustomComponent() {
   
   const newVisit = async() => {
-    const response = await fetch('/api/incrementVisits', {
+    const response = await fetch('api/incrementVisits', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ function MyCustomComponent() {
   }
 
   const newClick = async() => {
-    const response = await fetch('/api/incrementClicks', {
+    const response = await fetch('api/incrementClicks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
