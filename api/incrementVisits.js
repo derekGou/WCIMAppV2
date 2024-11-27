@@ -1,16 +1,16 @@
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-console.log(process.env.FIREBASE_PRIVATE_KEY)
-const { privateKey } = JSON.parse(process.env.FIREBASE_PRIVATE_KEY);
 
 // Initialize Firebase Admin SDK (if not already initialized globally)
 
-console.log(process.env.FIREBASE_PRIVATE_KEY)
 const app = initializeApp({
     credential: cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: 'derekgou19@gmail.com',
-        privateKey: privateKey,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(
+            /\\n/g,
+           '\n',
+        ),
     }),
 });
 
