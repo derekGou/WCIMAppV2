@@ -6,48 +6,48 @@ import { IconContext } from "react-icons";
 
 function MyCustomComponent() {
   
-  const newVisit = async() => {
-    const response = await fetch('api/incrementVisits.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  // const newVisit = async() => {
+  //   const response = await fetch('api/incrementVisits.js', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
   
-    if (!response.ok) {
-      throw new Error('Failed to increment visits');
-    }
+  //   if (!response.ok) {
+  //     throw new Error('Failed to increment visits');
+  //   }
   
-    const data = await response.json();
-    console.log(data.message);
-  }
+  //   const data = await response.json();
+  //   console.log(data.message);
+  // }
 
-  const newClick = async() => {
-    const response = await fetch('api/incrementClicks.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  // const newClick = async() => {
+  //   const response = await fetch('api/incrementClicks.js', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
   
-    if (!response.ok) {
-      throw new Error('Failed to increment clicks');
-    }
+  //   if (!response.ok) {
+  //     throw new Error('Failed to increment clicks');
+  //   }
   
-    const data = await response.json();
-    console.log(data.message);
-  }
+  //   const data = await response.json();
+  //   console.log(data.message);
+  // }
 
-  var myBool = true
-  useEffect(() => {
-    if (myBool){
-      newVisit()
-      myBool = false
-      window.addEventListener('click', function(){
-        newClick()
-      })
-    }
-  }, [])
+  // var myBool = true
+  // useEffect(() => {
+  //   if (myBool){
+  //     newVisit()
+  //     myBool = false
+  //     window.addEventListener('click', function(){
+  //       newClick()
+  //     })
+  //   }
+  // }, [])
   const { mapData, mapView } = useMap();
   const [input1, setInput1] = useState('');
   const [autofill1, setAutofill1] = useState<JSX.Element[]>([])
@@ -117,13 +117,9 @@ function MyCustomComponent() {
       }
     }
     if (itemCount==1){
-      var images: string = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
       mapData.getByType("space").forEach((space) => {
-        if (space.name==strs[0]&&space.floor.name==strs[1]){
-          if (space.images.length>0){
-            images = space.images[0]
-          }
-          setContent1([strs[0], strs[1], images, space.id])
+        if (space.name.trim()==strs[0]&&space.floor.name==strs[1]){
+          setContent1([strs[0], strs[1], space.id])
         }
       });
       setInput1(strs[0])
@@ -143,7 +139,7 @@ function MyCustomComponent() {
     if (itemCount==1){
       var images: string = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
       mapData.getByType("space").forEach((space) => {
-        if (space.name==nameStr){
+        if (space.name.trim()==nameStr){
           if (space.images.length>0){
             images = space.images[0]
           }
@@ -167,7 +163,7 @@ function MyCustomComponent() {
       setContent2(['', ''])
       setAutofill1([])
       setInput1('')
-      setContent1(['', '', '', ''])
+      setContent1(['', '', ''])
     } else {
       console.log(itemCount)
     }
@@ -205,6 +201,10 @@ function MyCustomComponent() {
     setAutofill2(rows)
   }, [input2])
 
+  useEffect(()=>{
+    console.log(content1)
+  }, [content1])
+
   return (
     <>
       {mapData.getByType("space").map((space) => {
@@ -223,7 +223,7 @@ function MyCustomComponent() {
           </div>
           <hr/>
           <div className="flex items-center align-center w-full p-4">
-            <button className="w-full text-[1rem] py-[0.6rem] rounded-none" onClick={()=>{router(content1[3], content2[0])}} disabled={(content1[0]==content2[0])||((content1[0]==''&&content1[1]==''&&content1[2]==''&&content1[3]=='')||(content2[0]==''&&content2[1]==''))}>Let's Go!</button>
+            <button className="w-full text-[1rem] py-[0.6rem] rounded-none" onClick={()=>{router(content1[2], content2[0])}} disabled={(content1[0]==content2[0])||((content1[0]==''&&content1[1]==''&&content1[2]=='')||(content2[0]==''&&content2[1]==''))}>Let's Go!</button>
           </div>
         </div>
       </div>
