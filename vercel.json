@@ -1,31 +1,33 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "api/incrementClicks.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/incrementVisits.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/incrementClicks",
-      "dest": "/api/incrementClicks.js"
-    },
-    {
-      "src": "/api/incrementVisits",
-      "dest": "/api/incrementVisits.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "api/incrementClicks.ts",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/incrementVisits.ts",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/incrementClicks",
+        "methods": ["POST", "GET"],
+        "dest": "/api/incrementClicks.ts"
+      },
+      {
+        "src": "/api/incrementVisits",
+        "methods": ["POST", "GET"],
+        "dest": "/api/incrementVisits.ts"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }
