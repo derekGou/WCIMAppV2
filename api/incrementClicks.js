@@ -1,6 +1,6 @@
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-const { privateKey } = JSON.parse(process.env.private_key);
+const { privateKey } = JSON.parse(process.env.FIREBASE_PRIVATE_KEY);
 
 // Initialize Firebase Admin SDK (if not already initialized globally)
 console.log(process.env.FIREBASE_PRIVATE_KEY)
