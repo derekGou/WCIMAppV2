@@ -10,6 +10,8 @@ const app = initializeApp({
     }),
 });
 
+console.log(process.env.FIREBASE_PRIVATE_KEY)
+
 const db = getFirestore(app);
 
 export default async function handler(req, res) {
