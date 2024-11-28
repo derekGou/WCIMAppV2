@@ -6,48 +6,48 @@ import { IconContext } from "react-icons";
 
 function MyCustomComponent() {
   
-  // const newVisit = async() => {
-  //   const response = await fetch('api/incrementVisits.js', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
+  const newVisit = async() => {
+    const response = await fetch('api/incrementVisits.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   
-  //   if (!response.ok) {
-  //     throw new Error('Failed to increment visits');
-  //   }
+    if (!response.ok) {
+      throw new Error('Failed to increment visits');
+    }
   
-  //   const data = await response.json();
-  //   console.log(data.message);
-  // }
+    const data = await response.json();
+    console.log(data.message);
+  }
 
-  // const newClick = async() => {
-  //   const response = await fetch('api/incrementClicks.js', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
+  const newClick = async() => {
+    const response = await fetch('api/incrementClicks.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   
-  //   if (!response.ok) {
-  //     throw new Error('Failed to increment clicks');
-  //   }
+    if (!response.ok) {
+      throw new Error('Failed to increment clicks');
+    }
   
-  //   const data = await response.json();
-  //   console.log(data.message);
-  // }
+    const data = await response.json();
+    console.log(data.message);
+  }
 
-  // var myBool = true
-  // useEffect(() => {
-  //   if (myBool){
-  //     newVisit()
-  //     myBool = false
-  //     window.addEventListener('click', function(){
-  //       newClick()
-  //     })
-  //   }
-  // }, [])
+  var myBool = true
+  useEffect(() => {
+    if (myBool){
+      newVisit()
+      myBool = false
+      window.addEventListener('click', function(){
+        newClick()
+      })
+    }
+  }, [])
   const { mapData, mapView } = useMap();
   const [input1, setInput1] = useState('');
   const [autofill1, setAutofill1] = useState<JSX.Element[]>([])
@@ -85,6 +85,7 @@ function MyCustomComponent() {
   collapsedList.sort()
 
   const router = (space1:string, space2:string) => {
+    console.log(space1, space2)
     const firstSpace = mapData.getByType('space').find(s => s.id === space1);
     const secondSpace:any[] = []
     mapData.getByType('space').forEach(s => {
@@ -106,7 +107,7 @@ function MyCustomComponent() {
     }
   }
 
-  const [content1, setContent1] = useState(['', '', '', ''])
+  const [content1, setContent1] = useState(['', '', ''])
   const [content2, setContent2] = useState(['', ''])
 
   const runMenu1 = (strs:string[]) => {
@@ -261,7 +262,7 @@ function MyCustomComponent() {
             <div className="bg-white rounded-full hover:brightness-90 overflow-none cursor-pointer" onClick={()=>{
               setAutofill1([])
               setInput1('')
-              setContent1(['', '', '', ''])
+              setContent1(['', '', ''])
             }}>
               <IconContext.Provider value={{size:'1.5rem'}}>
                 <IoIosClose/>
@@ -276,7 +277,7 @@ function MyCustomComponent() {
       <div style={{ display: showMenu ? 'flex' : 'none' }} className="cursor-pointer flex items-center justify-center fixed rounded-full bg-white right-[20px] top-[20px] hover:rotate-90 transition-all" onClick={()=>{
         setAutofill1([])
         setInput1('')
-        setContent1(['', '', '', ''])
+        setContent1(['', '', ''])
         setAutofill2([])
         setInput2('')
         setContent2(['', ''])
