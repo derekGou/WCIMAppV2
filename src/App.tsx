@@ -86,7 +86,7 @@ function MyCustomComponent() {
 
   const router = (space1:string, space2:string) => {
     console.log(space1, space2)
-    const firstSpace = mapData.getByType('space').find(s => s.id === space1);
+    const firstSpace = mapData.getByType('space').find(s => s && s.id === space1);
     const secondSpace:any[] = []
     mapData.getByType('space').forEach(s => {
       if (s.name==space2){
