@@ -1,11 +1,12 @@
-import  { useState, useEffect } from "react";
+import  { useState, useEffect, useRef } from "react";
 import { MapView, useMapData, useMap, Label } from "@mappedin/react-sdk";
 import "@mappedin/react-sdk/lib/esm/index.css";
 import { IoIosSearch, IoIosClose } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 function MyCustomComponent() {
-  
+  const [stacked, setStacked] = useState(true)
+
   const newVisit = async() => {
     const response = await fetch('api/incrementVisits.js', {
       method: 'POST',
@@ -205,6 +206,34 @@ function MyCustomComponent() {
     console.log(content1)
   }, [content1])
 
+  const floorSelect:any = useRef(null)
+  const floorSelector = document.getElementById(
+    "floor-selector"
+  ) as HTMLSelectElement;
+  useEffect(()=>{
+    if (floorSelector){
+      mapData.getByType("floor").forEach((floor) => {
+        const option = document.createElement("option");
+        option.text = floor.name;
+        option.value = floor.id;
+        floorSelector.appendChild(option);
+        floorSelector.value = mapView.currentFloor.id;
+        // Act on the floor-selector change event to update the map view.
+        floorSelector.addEventListener("change", (e) => {
+          mapView.setFloor((e.target as HTMLSelectElement)?.value);
+        });
+      });
+    }
+  }, [floorSelector])
+  mapView.on("floor-change", (event) => {
+    // update the level selector
+    const id = event?.floor.id;
+    if (!id) return;
+    floorSelector.value = id;
+    console.log("Floor changed to: ", event?.floor.name);
+  });
+
+
   return (
     <>
       {mapData.getByType("space").map((space) => {
@@ -294,7 +323,17 @@ function MyCustomComponent() {
         <button onClick={()=>{
           setShowMenu(true)
         }}>Set a new route</button>
+        <button onClick={()=>{
+          if (stacked){
+            mapView.collapse()
+            setStacked(false)
+          } else {
+            mapView.expand()
+            setStacked(true)
+          }
+        }}>Toggle Stacking</button>
       </div>
+      <select ref = {(el)=>floorSelect.current = el} style={{ display: stacked ? 'none' : 'auto' }} id="floor-selector"></select>
     </>
   );
 }
