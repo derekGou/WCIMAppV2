@@ -5,8 +5,7 @@ import { IoIosSearch, IoIosClose } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 function MyCustomComponent() {
-  // const [stacked, setStacked] = useState(true)
-
+  
   const newVisit = async() => {
     const response = await fetch('api/incrementVisits.js', {
       method: 'POST',
@@ -57,7 +56,7 @@ function MyCustomComponent() {
 
   const [showMenu, setShowMenu] = useState(true)
 
-  // mapView.expand()
+  mapView.expand()
   mapView.Outdoor.setStyle('https://tiles-cdn.mappedin.com/styles/starlight/style.json');
   var spaceList: string[] = []
   var collapsedList: string[][] = []
@@ -205,36 +204,6 @@ function MyCustomComponent() {
   useEffect(()=>{
     console.log(content1)
   }, [content1])
-//  var floor1 = ''
-  // const floorSelect:any = useRef(null)
-  // const floorSelector = document.getElementById(
-  //   "floor-selector"
-  // ) as HTMLSelectElement;
-  // useEffect(()=>{
-  //   if (floorSelector){
-  //     mapData.getByType("floor").forEach((floor) => {
-  //       const option = document.createElement("option");
-  //       option.text = floor.name;
-  //       floor1 = floor.id.trim()
-  //       console.log(floor.id)
-  //       option.value = floor.id;
-  //       floorSelector.appendChild(option);
-  //       floorSelector.value = mapView.currentFloor.id;
-  //       // Act on the floor-selector change event to update the map view.
-  //       floorSelector.addEventListener("change", (e) => {
-  //         mapView.setFloor((e.target as HTMLSelectElement)?.value);
-  //       });
-  //     });
-  //   }
-  // }, [floorSelector])
-  // mapView.on("floor-change", (event) => {
-  //   // update the level selector
-  //   const id = event?.floor.id;
-  //   if (!id) return;
-  //   floorSelector.value = id;
-  //   console.log("Floor changed to: ", event?.floor.name);
-  // });
-
 
   return (
     <>
@@ -325,18 +294,6 @@ function MyCustomComponent() {
         <button onClick={()=>{
           setShowMenu(true)
         }}>Set a new route</button>
-        {/* <button onClick={()=>{
-          if (stacked){
-            mapView.setFloor('m_4a09cb229a494b0c')
-            setStacked(false)
-            console.log('collapsed')
-          } else {
-            mapView.expand()
-            setStacked(true)
-            console.log('expanded')
-          }
-        }}>Toggle Stacking</button>
-        <select ref = {(el)=>floorSelect.current = el} style={{ display: stacked ? 'none' : 'block' }} id="floor-selector"></select> */}
       </div>
     </>
   );
