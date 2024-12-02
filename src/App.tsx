@@ -205,7 +205,7 @@ function MyCustomComponent() {
   useEffect(()=>{
     console.log(content1)
   }, [content1])
-
+ var floor1 = ''
   const floorSelect:any = useRef(null)
   const floorSelector = document.getElementById(
     "floor-selector"
@@ -215,6 +215,7 @@ function MyCustomComponent() {
       mapData.getByType("floor").forEach((floor) => {
         const option = document.createElement("option");
         option.text = floor.name;
+        floor1 = floor.id
         option.value = floor.id;
         floorSelector.appendChild(option);
         floorSelector.value = mapView.currentFloor.id;
@@ -325,11 +326,13 @@ function MyCustomComponent() {
         }}>Set a new route</button>
         <button onClick={()=>{
           if (stacked){
-            mapView.collapse()
+            mapView.setFloor(floor1)
             setStacked(false)
+            console.log('collapsed')
           } else {
             mapView.expand()
             setStacked(true)
+            console.log('expanded')
           }
         }}>Toggle Stacking</button>
       </div>
